@@ -8,9 +8,9 @@ RUN wget https://archive.apache.org/dist/kafka/3.1.2/kafka_2.12-3.1.2.tgz && tar
 
 #RUN chmod +x bdfi-practicafinal/scripts/startkafka.sh
 #WORKDIR /main/bdfi-practicafinal/dockerfile-files/kafka
-#WORKDIR /main/bdfi-practicafinal/dockerfile-files/kafka
+WORKDIR /main/kafka_2.12-3.1.2
 EXPOSE 9092
 
 #CMD ls /main/bdfi-practicafinal
-CMD sh ./bdfi-practicafinal/scripts/startkafka.sh
+CMD sh ./../bdfi-practicafinal/scripts/startkafka.sh
 
