@@ -1,0 +1,66 @@
+version: "3"
+services:
+#  zookeeper:
+#     image: 'bitnami/zookeeper:latest'
+#     ports:
+#       - '2181:2181'
+#     environment:
+#       - ALLOW_ANONYMOUS_LOGIN=yes
+#   kafka:
+#     image: 'bitnami/kafka:latest'
+#     ports:
+#       - '9092:9092'
+#     environment:
+#       - KAFKA_BROKER_ID=1
+#       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+#       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+#       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+#       - ALLOW_PLAINTEXT_LISTENER=yes
+#     depends_on:
+#       - zookeeper
+  zookeeper:
+    build: dockerfile-files/zookeeper
+    ports:
+      - '2181:2181'
+    network_mode: host
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    build: dockerfile-files/kafka
+    ports:
+      - '9092:9092'
+    network_mode: host
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+  # topics:
+  #   image: ubuntu:14.04
+  #   command: bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic flight_delay_classification_request
+  #   depends_on:
+  #     - kafka
+  mongo:
+    build: dockerfile-files/mongo
+    ports:
+      - '27017:27017'
+  spark:
+    build: dockerfile-files/spark
+    network_mode: host
+    environment:
+      - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+    depends_on:
+      - kafka
+      - mongo
+  flask-server:
+    build: dockerfile-files/flask-server
+    ports:
+      - '5000:5000'
+    network_mode: host
+    environment:
+      - PROJECT_HOME=/main/bdfi-practicafinal
+    depends_on:
+      - spark
