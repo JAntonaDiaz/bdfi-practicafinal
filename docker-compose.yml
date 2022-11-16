@@ -1,36 +1,35 @@
 version: "3"
 services:
   zookeeper:
+    container_name: zookeeper
     build: dockerfile-files/zookeeper
     ports:
-      - '2181:2181'
+     - '2181:2181'
     network_mode: host
-    environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
+    container_name: kafka
     build: dockerfile-files/kafka
     ports:
       - '9092:9092'
     network_mode: host
-    environment:
-      - KAFKA_BROKER_ID=1
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
   topics:
+    container_name: topics
     build: dockerfile-files/topics-kafka
+    ports:
+      - '9092:9092'
     depends_on:
       - kafka
     network_mode: host
   mongo:
+    container_name: mongo
     build: dockerfile-files/mongo
     ports:
       - '27017:27017'
     network_mode: host
   spark:
+    container_name: spark
     build: dockerfile-files/spark
     network_mode: host
     environment:
@@ -40,6 +39,7 @@ services:
       - topics
       - mongo
   flask-server:
+    container_name: flask-server
     build: dockerfile-files/flask-server
     ports:
       - '5000:5000'
