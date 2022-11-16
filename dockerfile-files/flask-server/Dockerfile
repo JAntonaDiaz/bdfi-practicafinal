@@ -14,8 +14,6 @@ RUN pip install -r requirements.txt
 RUN pip install joblib
 
 WORKDIR /main/bdfi-practicafinal/resources/web
-ENV PROJECT_HOME="/main/bdfi-practicafinal"
-
 
 ENTRYPOINT ["python3"]
 CMD ["predict_flask.py"]
