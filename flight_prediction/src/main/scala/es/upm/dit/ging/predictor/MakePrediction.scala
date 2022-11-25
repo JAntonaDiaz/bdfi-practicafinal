@@ -43,10 +43,11 @@ object MakePrediction {
     val rfc = RandomForestClassificationModel.load(randomForestModelPath)
 
     //Process Prediction Requests in Streaming
+    val kafka_host = sys.env("KAFKA_HOST")
     val df = spark
       .readStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", "localhost:9092")
+      .option("kafka.bootstrap.servers", "$kafka_host:9092")
       .option("subscribe", "flight_delay_classification_request")
       .load()
     df.printSchema()
@@ -139,7 +140,8 @@ object MakePrediction {
     finalPredictions.printSchema()
 
     // Define MongoUri for connection
-    val writeConfig = WriteConfig(Map("uri" -> "mongodb://127.0.0.1:27017/agile_data_science.flight_delay_classification_response"))
+    val mongo_host = sys.env("MONGO_HOST")
+    val writeConfig = WriteConfig(Map("uri" -> "mongodb://$mongo_host:27017/agile_data_science.flight_delay_classification_response"))
 
     // Store to Mongo each streaming batch
     val flightRecommendations = finalPredictions.writeStream.foreachBatch {
