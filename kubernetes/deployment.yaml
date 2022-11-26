@@ -27,7 +27,7 @@ spec:
       - env:
         - name: PROJECT_HOME
           value: /main/bdfi-practicafinal
-        image: gcr.io/bdfi-367411/bdfi-flask-server:1
+        image: gcr.io/bdfi-367411/bdfi-flask-server:2
         imagePullPolicy: ""
         name: flask-server
         ports:
@@ -67,7 +67,7 @@ spec:
         io.kompose.service: mongo
     spec:
       containers:
-      - image: gcr.io/bdfi-367411/bdfi-mongo:1
+      - image: gcr.io/bdfi-367411/bdfi-mongo:2
         imagePullPolicy: ""
         name: mongo
         ports:
@@ -107,7 +107,7 @@ spec:
       - env:
         - name: SPARK_HOME
           value: /main/spark-3.1.2-bin-hadoop2.7
-        image: gcr.io/bdfi-367411/bdfi-spark:1
+        image: gcr.io/bdfi-367411/bdfi-spark:2
         imagePullPolicy: ""
         name: spark
         ports:
@@ -147,7 +147,7 @@ spec:
         io.kompose.service: kafka
     spec:
       containers:
-      - image: gcr.io/bdfi-367411/bdfi-kafka:1
+      - image: gcr.io/bdfi-367411/bdfi-kafka:2
         imagePullPolicy: ""
         name: kafka
         ports:
@@ -187,7 +187,7 @@ spec:
         io.kompose.service: topics
     spec:
       containers:
-      - image: gcr.io/bdfi-367411/bdfi-topics-kafka:1
+      - image: gcr.io/bdfi-367411/bdfi-topics-kafka:2
         imagePullPolicy: ""
         name: topics
         ports:
@@ -226,7 +226,7 @@ spec:
         io.kompose.service: zookeeper
     spec:
       containers:
-      - image: gcr.io/bdfi-367411/bdfi-zookeeper:1
+      - image: gcr.io/bdfi-367411/bdfi-zookeeper:2
         imagePullPolicy: ""
         name: zookeeper
         ports:
