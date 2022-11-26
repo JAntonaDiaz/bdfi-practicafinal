@@ -1,5 +1,5 @@
 import os
-f = open("/main/kafka_2.12-2.3.0/config/server.properties", "w")
+f = open("/main/kafka_2.12-3.1.2/config/server.properties", "w")
 zookeeper_host = os.getenv('ZOOKEPER_HOST')
 zookeeper_port = os.getenv('ZOOKEPER_PORT')
 kafka_host = os.getenv('KAFKA_HOST')
