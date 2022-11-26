@@ -147,7 +147,7 @@ spec:
         io.kompose.service: kafka
     spec:
       containers:
-      - image: gcr.io/bdfi-367411/bdfi-kafka:2
+      - image: gcr.io/bdfi-367411/bdfi-kafka:3
         imagePullPolicy: ""
         name: kafka
         ports:
@@ -196,6 +196,7 @@ spec:
             - configMapRef:
                 name: configmap-pfinal
         resources: {}
+      srestartPolicy: Never
       serviceAccountName: ""
       volumes: null
 status: {}
