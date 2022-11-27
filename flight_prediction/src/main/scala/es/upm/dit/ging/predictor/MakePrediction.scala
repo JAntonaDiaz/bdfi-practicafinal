@@ -16,12 +16,12 @@ object MakePrediction {
     val spark = SparkSession
       .builder
       .appName("StructuredNetworkWordCount")
-      //.master("local[*]")
+      .master("local[*]")
       .getOrCreate()
     import spark.implicits._
 
     //Load the arrival delay bucketizer
-    val base_path= "/main/bdfi-practicafinal"
+    val base_path= "/main"
     val arrivalBucketizerPath = "%s/models/arrival_bucketizer_2.0.bin".format(base_path)
     print(arrivalBucketizerPath.toString())
     val arrivalBucketizer = Bucketizer.load(arrivalBucketizerPath)
@@ -43,11 +43,11 @@ object MakePrediction {
     val rfc = RandomForestClassificationModel.load(randomForestModelPath)
 
     //Process Prediction Requests in Streaming
-    val kafka_host = sys.env("KAFKA_HOST")
+    val host_kafka = sys.env("KAFKA_HOST")
     val df = spark
       .readStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", s"$kafka_host:9092")
+      .option("kafka.bootstrap.servers", s"$host_kafka:9092")
       .option("subscribe", "flight_delay_classification_request")
       .load()
     df.printSchema()
@@ -140,8 +140,8 @@ object MakePrediction {
     finalPredictions.printSchema()
 
     // Define MongoUri for connection
-    val mongo_host = sys.env("MONGO_HOST")
-    val writeConfig = WriteConfig(Map("uri" -> s"mongodb://$mongo_host:27017/agile_data_science.flight_delay_classification_response"))
+    val host_mongo = sys.env("MONGO_HOST");
+    val writeConfig = WriteConfig(Map("uri" -> s"mongodb://$host_mongo:27017/agile_data_science.flight_delay_classification_response"))
 
     // Store to Mongo each streaming batch
     val flightRecommendations = finalPredictions.writeStream.foreachBatch {
