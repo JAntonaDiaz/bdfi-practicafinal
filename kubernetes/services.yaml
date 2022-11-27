@@ -31,10 +31,12 @@ metadata:
     io.kompose.service: mongo
   name: mongo
 spec:
+  type: NodePort
   ports:
   - name: "27017"
     port: 27017
     targetPort: 27017
+    nodePort: 30017
   selector:
     io.kompose.service: mongo
 status:
@@ -51,10 +53,12 @@ metadata:
     io.kompose.service: zookeeper
   name: zookeeper
 spec:
+  type: NodePort
   ports:
   - name: "2181"
     port: 2181
     targetPort: 2181
+    nodePort: 30181
   selector:
     io.kompose.service: zookeeper
 status:
@@ -71,51 +75,55 @@ metadata:
     io.kompose.service: kafka
   name: kafka
 spec:
+  type: NodePort
   ports:
   - name: "9092"
     port: 9092
     targetPort: 9092
+    nodePort: 30092
   selector:
     io.kompose.service: kafka
 status:
   loadBalancer: {}  
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -f docker-compose.yml
-    kompose.version: 1.21.0 (992df58d8)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: topics
-  name: topics
-spec:
-  ports:
-  - name: "topics-9092"
-    port: 9092
-    targetPort: 9092
-  selector:
-    io.kompose.service: topics
-status:
-  loadBalancer: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -f docker-compose.yml
-    kompose.version: 1.21.0 (992df58d8)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: spark
-  name: spark
-spec:
-  ports:
-  - name: "7077"
-    port: 7077
-    targetPort: 7077
-  selector:
-    io.kompose.service: spark
-status:
-  loadBalancer: {}
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   annotations:
+#     kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -f docker-compose.yml
+#     kompose.version: 1.21.0 (992df58d8)
+#   creationTimestamp: null
+#   labels:
+#     io.kompose.service: topics
+#   name: topics
+# spec:
+#   ports:
+#   - name: "topics-9092"
+#     port: 9092
+#     targetPort: 9092
+#   selector:
+#     io.kompose.service: topics
+# status:
+#   loadBalancer: {}
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   annotations:
+#     kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -f docker-compose.yml
+#     kompose.version: 1.21.0 (992df58d8)
+#   creationTimestamp: null
+#   labels:
+#     io.kompose.service: spark
+#   name: spark
+# spec:
+#   type: NodePort
+#   ports:
+#   - name: "7077"
+#     port: 7077
+#     targetPort: 7077
+#     nodePort: 30077
+#   selector:
+#     io.kompose.service: spark
+# status:
+#   loadBalancer: {}

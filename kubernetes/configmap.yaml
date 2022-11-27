@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-        name: configmap-pfinal
+        name: configmap-bigdata
 data:
-        PROJECT_HOME: /main/bdfi-practicafinal
-        MONGO_HOST: "10.32.13.253" # A cambiar por la direccion correspondiente
+        PROJECT_HOME: /
+        MONGO_HOST: "10.32.0.93" # A cambiar por la direccion correspondiente
         MONGO_PORT: "27017"
-        ZOOKEPER_HOST: "10.32.15.156" # A cambiar por la direccion correspondiente
+        ZOOKEPER_HOST: "10.32.1.152" # A cambiar por la direccion correspondiente
         ZOOKEPER_PORT: "2181"
-        SPARK_HOME: /main/spark-3.1.2-bin-hadoop2.7
-        KAFKA_HOST: "10.32.6.160" # A cambiar por la direccion correspondiente
+        SPARK_HOME: /main/spark-2.4.4-bin-hadoop2.7
+        KAFKA_HOST: "10.32.12.46" # A cambiar por la direccion correspondiente
         KAFKA_PORT: "9092"
