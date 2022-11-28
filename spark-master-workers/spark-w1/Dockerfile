@@ -19,9 +19,9 @@ WORKDIR /main/bdfi-practicafinal
 RUN pip install -r requirements.txt
 #RUN rm -r models
 
-#ENV SPARK_WORKER_INSTANCES=2
+ENV SPARK_WORKER_INSTANCES=1
 ENV SPARK_WORKER_CORES=1
 ENV SPARK_EXECUTOR_CORES=1
 
 #Correr SPARK
-CMD ./../spark-3.1.2-bin-hadoop2.7/sbin/start-worker.sh spark://instance-bdfi-proyecto-final.europe-southwest1-a.c.bdfi-367411.internal:7077
+CMD ./../spark-3.1.2-bin-hadoop2.7/sbin/start-worker.sh spark://instance-bdfi-proyecto-final.europe-southwest1-a.c.bdfi-367411.internal:7077 & sleep infinity
