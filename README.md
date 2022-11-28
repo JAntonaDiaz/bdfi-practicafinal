@@ -87,6 +87,7 @@ que vamos a crear a continuación
 
 ## Despliegue del escenario completo en Google Cloud con NoMachine
 
+
 ## Autores
 - José Antonio Antona Díaz
 - Aitor Encinas Alonso 
