@@ -25,38 +25,41 @@ services:
       - '27017:27017'
     network_mode: host
   spark:
-    build: spark-m
+    build: spark-m-w
     ports:
       - '8080:8080'
     network_mode: host
     environment:
       - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+      - SPARK_WORKLOAD=master
     depends_on:
       - kafka
       - topics
       - mongo
-  worker1:
-    build: spark-w1
-    ports:
-      - '9091:9091'
-    network_mode: host
-    environment:
-      - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
-    depends_on:
-      - kafka
-      - topics
-      - mongo
-  worker2:
-    build: spark-w2
-    ports:
-      - '9092:9092'
-    network_mode: host
-    environment:
-      - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
-    depends_on:
-      - kafka
-      - topics
-      - mongo
+  # worker1:
+  #   build: spark-w1
+  #   ports:
+  #     - '9091:9091'
+  #   network_mode: host
+  #   environment:
+  #     - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+  #     - SPARK_WORKLOAD=worker
+  #   depends_on:
+  #     - kafka
+  #     - topics
+  #     - mongo
+  # worker2:
+  #   build: spark-w2
+  #   ports:
+  #     - '9092:9092'
+  #   network_mode: host
+  #   environment:
+  #     - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+  #     - SPARK_WORKLOAD=worker
+  #   depends_on:
+  #     - kafka
+  #     - topics
+  #     - mongo
   flask-server:
     image: gcr.io/bdfi-367411/bdfi-flask-server:1
     ports:
