@@ -49,11 +49,22 @@ Partiendo del docker-compose.yaml creado en el hito anterior, se ha utilizado la
 
 Por ello, una vez instalado Kompose, ejecutando el comando:
 ```
-sudo docker-compose up
+kompose convert
 ```
-en el mismo directorio en el que se encuentra el docker-compose.yaml, genera los disintos x-service.yaml y x-deployment.yaml que hemos agrupado en los ficheros services.yaml y deployment.yaml.
+en el mismo directorio en el que se encuentra el docker-compose.yaml, generando los disintos x-service.yaml y x-deployment.yaml que hemos agrupado en los ficheros services.yaml y deployment.yaml.
+
+El resultado del comando anterior es el siguiente:
+*METER AHÍ LOS COMANDOS DE SALIDA TRIGUAPOS*
 
 No obstante, cabe señalar que los servicios se encuentran configurados como ClusterIP, por lo que desde el exterior no podríamos acceder el servidor Flask. Por ello, es necesario cambiar el tipo de servicio del servidor Flask a NodePort, permitiendo así que al exponer una dirección IP estática externa para el cluster, a través del puerto 30500 podamos acceder al interfaz web.
+*NOTA: el rango de puertos elegibles de tipo NodePort es entre el 30000-32767*
+### Modificación de ficheros del proyecto
+Debido a que ya no se despliegan los contenedores en el mismo ordenador, hay que modificar los ficheros que utilizan los distintos componentes para conectarse entre sí ya que por defecto se conectan todos a *localhost:puerto_servicio*. 
+Los ficheros que deben modificarse son:
+- Para Spark: *flight_prediction/src/main/scala/es/upm/dit/predictor/MakePrediction.scala* y la construcción del .jar para conectarse a mongo y a kafka.
+- Para Kafka: a través de los scripts *bdfi-practicafinal/scripts/startkafka.sh* y *bdfi-practicafinal/scripts/mod-kafka.py* a los que se acceden en la imagen del contenedor, se modificarán los ficheros internos de kafka necesarios para que se conecte con el zookeeper y crear el topic.
+- Para Flask: *bdfi-practicafinal/resources/web/predict_flask.py* para enviar las entradas del usuario al topic de kafka y conectarse a mongo para poder hacer polling y recibir la predicción. 
+Sin embargo, para poder conectarse, necesitan conocer las direcciones IP interna de los servicios y hasta que no se haga el paso 9 de la siguiente sección no se pueden ver estas direcciones IP. Como solución, se ha optado por pasar las direcciones IP, los puertos y las principales variables de entorno a los contenedores a través de un ConfigMap, el cuál instalaremos en kubernetes tras rellenar las direcciones IP en los pasos 9 y 10 de la siguiente sección.
 ### Despliegue del sistema
 1. Crear un proyecto nuevo en gcloud/Acceder a un proyecto que tengas en gcloud
 2. Abrir la terminal
@@ -61,29 +72,30 @@ No obstante, cabe señalar que los servicios se encuentran configurados como Clu
 `gcloud config set project project-ID`
 4. Establecer la zona horaria donde se va a crear el clúster:
 `gcloud config set compute/zone europe-west2-a`
-5. Copiar los siguientes ficheros dentro de tu repositorio local:
+5. Copiar los siguientes ficheros dentro de tu directorio:
     - deployment.yaml
     - configmap.yaml
     - services.yaml
-7. Crear clúster:
-`./despliegue_parte1.sh`
-8. Una vez se haya creado el clúster correctamente, acceder a sus credenciales:
-`gcloud container clusters get-credentials bigdata-cluster`
-9. Crear los services y la regla del firewall para poder acceder al webserver:
-``
-10. Acceder a los services creados vía comandos o vía interfaz para obtener las direcciones de los endpoints de los pods 
+6. Crear clúster:
+`gcloud container clusters create bdfi-cluster --num-nodes=2` *COPIAR EL BUENO*
+7. Una vez se haya creado el clúster correctamente, acceder a sus credenciales:
+`gcloud container clusters get-credentials bdfi-cluster`
+8. Crear los services y la regla del firewall para poder acceder al webserver desde el exterior:
+`kubectl create -f services.yaml`
+`gcloud compute firewall-rules create allow-webserver --allow=tcp:30500`
+9. Acceder a los services creados vía comandos o vía interfaz para obtener las direcciones de los endpoints de los pods 
 que vamos a crear a continuación
     `kubectl get services`
-11. Editar el fichero configmap y copiamos las direcciones de kafka, mongo y zookeeper
-12. Ejecutar el tercer y último fichero de despliegue que crea el escenario:
+10. Editar el fichero configmap y copiamos las direcciones de kafka, mongo y zookeeper en el *configmap.yaml*
+11. Ejecutar el tercer y último fichero de despliegue que crea el escenario:
 `./despliegue_parte3.sh`
-13. Esperar 12-15 minutos hasta que se entrene el modelo
-14. Acceder a la dirección ip del cluster:
-    - Menú de navegación > Red de VPC > Direcciones IP externas
-15. Establecer la dirección ip del clúster estática:
-    - Abrir el menú desplegable del Tipo de IP > Seleccionar estática
-    *Hay dos direcciones porque hay dos nodos. Se puede realizar esta acción en cualquiera de las dos.
-16. Probar el funcionamiento en: *dir_ip_cluster:30500/flights/delays/predict_kafka*
+12. Esperar a que los contenedores se carguen y ejecuten correctamente.
+13. Acceder a la dirección ip del cluster y establecerla como estática:
+    - Menú de navegación > Red de VPC > Direcciones IP externas > CAMBIAR a estática
+    *NOTA: Hay tantas direcciones como nodos configurados. Se puede realizar esta acción en cualquiera de ellos, ya que al haber configurado el servicio del servidor flask como NodePort, cada nodo es un proxy de ese puerto hacia el servicio.*
+14. Probar el funcionamiento en: *ip_estática_externa_cluster:30500/flights/delays/predict_kafka*
+
+FOTACA DE QUE FURULAAAAAAA
 
 ## Despliegue del escenario completo en Google Cloud con NoMachine
 
