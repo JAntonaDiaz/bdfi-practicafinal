@@ -19,7 +19,8 @@ WORKDIR /main/bdfi-practicafinal
 RUN pip install -r requirements.txt
 #RUN rm -r models
 
-COPY /spark-master-workers/spark-env.sh /main/spark-3.1.2-bin-hadoop2.7/conf
+WORKDIR /main/bdfi-practicafinal/spark-master-workers
+COPY spark-env.sh /main/spark-3.1.2-bin-hadoop2.7/conf
 
 WORKDIR /main/spark-3.1.2-bin-hadoop2.7/conf
 RUN chmod 777 spark-env.sh
