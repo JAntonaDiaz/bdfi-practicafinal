@@ -44,10 +44,11 @@ object MakePrediction {
 
     //Process Prediction Requests in Streaming
     val host_kafka = sys.env("KAFKA_HOST")
+    val port_kafka = sys.env("KAFKA_PORT")
     val df = spark
       .readStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", s"$host_kafka:9092")
+      .option("kafka.bootstrap.servers", s"$host_kafka:$port_kafka")
       .option("subscribe", "flight_delay_classification_request")
       .load()
     df.printSchema()
