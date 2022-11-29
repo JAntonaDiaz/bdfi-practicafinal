@@ -209,6 +209,10 @@ Además, si modificamos el tipo de servicio del spark master a NodePort y creamo
 ## Despliegue del escenario completo en Google Cloud con NoMachine
 Para desplegar el escenario completo en Google Cloud, en primer lugar hemos creado a través de la interfaz web de [Google Cloud Platform](https://console.cloud.google.com/compute/instances) en el mismo proyecto en el que hemos realizado tanto el despliegue de Kubernetes como el registro de las imágenes.
 Para ello, hay que hacer click en Crear Instancia y la configuramos con una imagen Ubuntu 20.04 con arquitectura x86-64 y 50 GB de almacenamiento.
+Para correr el escenario completo, es necesario descargarse este repositorio mediante el comando:
+```
+git clone https://github.com/JAntonaDiaz/bdfi-practicafinal.git
+```
 
 
 ## Autores
