@@ -31,12 +31,10 @@ metadata:
     io.kompose.service: mongo
   name: mongo
 spec:
-  type: NodePort
   ports:
   - name: "27017"
     port: 27017
     targetPort: 27017
-    nodePort: 30017
   selector:
     io.kompose.service: mongo
 status:
@@ -53,12 +51,10 @@ metadata:
     io.kompose.service: zookeeper
   name: zookeeper
 spec:
-  type: NodePort
   ports:
   - name: "2181"
     port: 2181
     targetPort: 2181
-    nodePort: 30181
   selector:
     io.kompose.service: zookeeper
 status:
@@ -75,12 +71,10 @@ metadata:
     io.kompose.service: kafka
   name: kafka
 spec:
-  type: NodePort
   ports:
   - name: "9092"
     port: 9092
     targetPort: 9092
-    nodePort: 30092
   selector:
     io.kompose.service: kafka
 status:

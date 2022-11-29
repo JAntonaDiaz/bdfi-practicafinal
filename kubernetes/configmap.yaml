@@ -4,11 +4,11 @@ metadata:
         name: configmap-pfinal
 data:
         PROJECT_HOME: /main/bdfi-practicafinal
-        MONGO_HOST: "10.16.8.37" # A cambiar por la direccion correspondiente
+        MONGO_HOST: "10.32.2.206" # A cambiar por la direccion correspondiente
         MONGO_PORT: "27017"
-        ZOOKEPER_HOST: "10.16.14.148" # A cambiar por la direccion correspondiente
+        ZOOKEPER_HOST: "10.32.1.233" # A cambiar por la direccion correspondiente
         ZOOKEPER_PORT: "2181"
         SPARK_HOME: /main/spark-3.1.2-bin-hadoop2.7
-        KAFKA_HOST: "10.16.4.15" # A cambiar por la direccion correspondiente
+        KAFKA_HOST: "10.32.5.128" # A cambiar por la direccion correspondiente
         KAFKA_PORT: "9092"
-        SPARK_HOST: "10.16.2.85"
+        SPARK_HOST: "10.32.11.148" #A cambiar por la direccion correspondiente 
