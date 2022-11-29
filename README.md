@@ -91,10 +91,18 @@ Para comprobar su correcto funcionamiento, se puede acceder a la url: http://loc
 
 ## Registro de imágenes de los contenedores en el Container Registry de Google Cloud
 Aunque no se ha pedido en esta práctica, hemos subido las imágenes de los contenedores al Container Registry de Google Cloud. De esta manera, únicamente es necesario descargarse el [docker-compose](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/gcloud) situado en el directorio bdfi-practicafinal/gcloud de este repositorio.
-No obstante, para poder utilizarlas, previamente ha sido necesario autenticarse en gcloud y subir las imágenes mediante el comando
+No obstante, para poder utilizarlas, previamente ha sido necesario autenticarse en gcloud mediante el siguiente comando:
 ```
-Insertar comando
+gcloud init
 ```
+A continuación, desde el directorio donde se encuentra el fichero Dockerfile que queremos registrar en Google Cloud, hemos ejecutado los siguientes comandos para construir y registrarla:
+```
+docker build -t gcr.io/<nombre_proyecto_gloud>/<nombre_imagen>:<tag> .
+```
+```
+docker push gcr.io/<nombre_proyecto_gloud>/<nombre_imagen>:<tag>
+```
+
 
 *Poner lo que tiene Alex de obtener la lista de imagenes con pulls*
 
