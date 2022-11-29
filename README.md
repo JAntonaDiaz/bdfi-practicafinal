@@ -6,16 +6,17 @@ Gracias al despliegue de la arquitectura descrita a continuación, utilizaremos 
 
 ## Arquitectura del sistema y versiones
 La arquitectura completa del escenario se muestra a continuación:
+
 [<img src="images/video_course_cover.png">](http://datasyndrome.com/video)
 
-Para que el sistema funcione correctamente, se necesita compatibilidad entre las versiones de los distintos componentes software. Por ello, para el despliegue del escenario se han utilizado las siguientes versiones:
+Para que el sistema funcione correctamente, se require compatibilidad entre las versiones de los distintos componentes software. Para el despliegue del escenario se han utilizado las siguientes versiones:
  - [Intellij](https://www.jetbrains.com/help/idea/installation-guide.html) (jdk_1.8) *solo usado para el primer hito
  - [Pyhton3](https://realpython.com/installing-python/) (version 3.7) 
  - [PIP](https://pip.pypa.io/en/stable/installing/)(version 20.0.2)
  - [SBT](https://www.scala-sbt.org/release/docs/Setup.html) (version 1.8.0)
  - [Scala](https://www.scala-lang.org)(version 2.12.10)
- - [Zookeeper](https://zookeeper.apache.org/releases.html) (PONER VERSION, VER EN LA MV)
- - [Kafka](https://kafka.apache.org/quickstart) (PONER VERSION, VER EN LA MV)
+ - [Zookeeper](https://zookeeper.apache.org/releases.html) (version 3.6.3)
+ - [Kafka](https://kafka.apache.org/quickstart) (version 2.12-3.1.2)
  - [MongoDB](https://docs.mongodb.com/manual/installation/)(version 4.4)
  - [Spark](https://spark.apache.org/docs/latest/) (version 3.1.2)
 
