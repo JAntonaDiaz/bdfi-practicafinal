@@ -143,8 +143,10 @@ Sin embargo, para poder conectarse, necesitan conocer las direcciones IP interna
 7. Una vez se haya creado el clúster correctamente, acceder a sus credenciales:
 `gcloud container clusters get-credentials bdfi-cluster`
 8. Crear los services y la regla del firewall para poder acceder al webserver desde el exterior:
-`kubectl create -f services.yaml`
-`gcloud compute firewall-rules create allow-webserver --allow=tcp:30500`
+```
+kubectl create -f services.yaml
+gcloud compute firewall-rules create allow-webserver --allow=tcp:30500
+```
 9. Acceder a los services creados vía comandos o vía interfaz para obtener las direcciones de los endpoints de los pods 
 que vamos a crear a continuación
 `kubectl get services`
@@ -158,7 +160,9 @@ que vamos a crear a continuación
 *NOTA: Hay tantas direcciones como nodos configurados. Se puede realizar esta acción en cualquiera de ellos, ya que al haber configurado el servicio del servidor flask como NodePort, cada nodo es un proxy de ese puerto hacia el servicio.*
 14. Probar el funcionamiento en: *ip_estática_externa_cluster:30500/flights/delays/predict_kafka*
 
-FOTACA DE QUE FURULAAAAAAA
+Lo que se debe obtener es lo siguiente:
+
+Además, si modificamos el tipo de servicio del spark master a NodePort y creamos una regla de firewall para poder ver el correcto funcionamiento del Spark cluster y configuramos  en *ip_estática_externa_cluster:30080* podemos ver lo siguiente:
 
 ## Despliegue del escenario completo en Google Cloud con NoMachine
 
