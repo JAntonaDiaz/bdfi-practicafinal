@@ -56,7 +56,7 @@ El fichero .jar estará situado en *bdfi-practicafinal/flight_prediction/target/
 
 Por último, para arrancar la instancia de Spark en local utilizaremos el siguiente comando:
 ```
-./opt/spark/bin/spark-submit --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /home/user1/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
+./opt/spark/bin/spark-submit --master local[*] --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /home/user1/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
 ```
 *NOTA: el comando anterior incluye paquetes para que el spark pueda conectarse a Kafka y a Mongo y poder realizar el flujo del sistema.* 
 ## Despliegue del escenario con DOCKER-COMPOSE
@@ -95,6 +95,9 @@ Para comprobar su correcto funcionamiento, se puede acceder a la url: http://loc
 Aunque no se ha pedido en esta práctica, hemos subido las imágenes de los contenedores al Container Registry de Google Cloud. De esta manera, únicamente es necesario descargarse el [docker-compose](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/gcloud) situado en el directorio bdfi-practicafinal/gcloud de este repositorio.
 No obstante, para poder utilizarlas, previamente ha sido necesario autenticarse en gcloud mediante el siguiente comando:
 ```
+gcloud auth login
+```
+```
 gcloud init
 ```
 A continuación, desde el directorio donde se encuentra el fichero Dockerfile que queremos registrar en Google Cloud, hemos ejecutado los siguientes comandos para construir y registrarla:
@@ -129,7 +132,7 @@ Una vez ejecutados los comandos anteriores, y todos los contenedores se hayan de
 
 ## Despliegue con KUBERNETES
 ### Obtención de los ficheros service.yaml y deployment.yaml
-Partiendo del docker-compose.yaml creado en el hito anterior, se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
+Partiendo del docker-compose.yaml situado en el directorio bdfi-practicafinal/kubernetes y basado en el generado en la sección anterior, se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
 
 Por ello, una vez instalado Kompose, ejecutando el comando:
 ```
