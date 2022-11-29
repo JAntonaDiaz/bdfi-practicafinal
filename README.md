@@ -214,7 +214,7 @@ Para correr el escenario completo, es necesario descargarse este repositorio med
 ```
 git clone https://github.com/JAntonaDiaz/bdfi-practicafinal.git
 ```
-Una vez creada la máquina virtual en Google Cloud, hemos utilizado descargado y configurado la herramienta NoMachine. NoMachine es un programa informático que realiza conexiones remotas muy rápidas y permite acceder a escritorios remotos en Linux. Para la configuración de esta herramienta, hemos seguido el siguiente tutorial: https://www.nomachine.com/es/acceder-a-su-escritorio-remoto-en-google-cloud-platform-a-trav%C3%A9s-de-nomachine.
+Una vez creada la máquina virtual en Google Cloud, hemos descargado y configurado la herramienta NoMachine, con el objetivo de acceder a través de una interfaz gráfica al escritorio de la máquina virtual creada en Google Cloud. NoMachine es un programa informático que realiza conexiones remotas muy rápidas y permite acceder a escritorios remotos en Linux. Para la configuración de esta herramienta, hemos seguido el siguiente tutorial: https://www.nomachine.com/es/acceder-a-su-escritorio-remoto-en-google-cloud-platform-a-trav%C3%A9s-de-nomachine.
 
 ## Autores
 - José Antonio Antona Díaz
