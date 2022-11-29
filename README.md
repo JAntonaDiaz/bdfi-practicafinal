@@ -96,6 +96,8 @@ No obstante, para poder utilizarlas, previamente ha sido necesario autenticarse 
 Insertar comando
 ```
 
+*Poner lo que tiene Alex de obtener la lista de imagenes con pulls*
+
 
 ## Despliegue con KUBERNETES
 ### Obtención de los ficheros service.yaml y deployment.yaml
