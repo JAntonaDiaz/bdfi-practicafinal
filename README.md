@@ -150,7 +150,7 @@ gcloud compute firewall-rules create allow-webserver --allow=tcp:30500
 9. Acceder a los services creados vía comandos o vía interfaz para obtener las direcciones de los endpoints de los pods 
 que vamos a crear a continuación
 `kubectl get services`
-10. Editar el fichero configmap y copiamos las direcciones de kafka, mongo y zookeeper en el *configmap.yaml*
+10. Editar el fichero configmap y copiamos las direcciones de kafka, mongo, spark y zookeeper en el *configmap.yaml*
 11. Meter el configmap en el clúster y crear los pods:
 `kubectl create -f configmap.yaml`
 `kubectl create -f deployment.yaml`
