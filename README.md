@@ -22,12 +22,12 @@ Para que el sistema funcione correctamente, se require compatibilidad entre las 
 
 ### Procesos del sistema
 1. Descargar los datos de vuelos pasados.
-2. Entrenar el modelo de ML utilizando los datos de vuelos usando PySpark.
+2. Entrenar el modelo de ML con los datos de vuelos usando PySpark.
 3. Desplegar el job de Spark que predice el retraso de los vuelos utilizando el modelo creado.
 4. A través de una interfaz web, el usuario introducirá los datos del vuelo a predecir y se enviarán al servidor web de Flask.
 5. El servidor web enviará esos datos al job a través de Kafka.
 6. El job realizará la predicción y la guardará en Mongo.
-7. La interfaz web estará constantemente haciendo polling para comprobar si ya está realizada la predicción y en caso afirmativo, muestra la predicción por la interfaz.
+7. La interfaz web estará constantemente haciendo polling para comprobar si ya está realizada la predicción y en caso afirmativo, muestra la predicción por la interfaz web.
 
 ## Hitos conseguidos
 - Lograr el funcionamiento de la práctica sin realizar modificaciones.
