@@ -58,7 +58,7 @@ Por último, para arrancar el Spark en local utilizaremos el siguiente comando:
 ## Despliegue con DOCKER-COMPOSE
 Hablar de los workers aquí
 ## Despliegue con KUBERNETES
-###Obtención de los ficheros service.yaml y deployment.yaml
+### Obtención de los ficheros service.yaml y deployment.yaml
 Partiendo del docker-compose.yaml creado en el hito anterior, se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
 
 Por ello, una vez instalado Kompose, ejecutando el comando:
