@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: spark
+  name: spark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: spark
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: spark
+    spec:
+      containers:
+      - env:
+        - name: KAFKA_HOST
+          value: localhost
+        - name: KAFKA_PORT
+          value: "9092"
+        - name: MONGO_HOST
+          value: localhost
+        - name: MONGO_PORT
+          value: "27017"
+        - name: SPARK_HOME
+          value: /main/spark-3.1.2-bin-hadoop2.7
+        image: spark
+        imagePullPolicy: ""
+        name: spark
+        ports:
+        - containerPort: 8080
+        - containerPort: 7077
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
