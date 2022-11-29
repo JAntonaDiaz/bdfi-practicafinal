@@ -80,10 +80,13 @@ Finalmente, para desplegar el escenario utilizando docker-compose, es necesario 
 ```
 sudo docker-compose up
 ```
+Una vez ejecutado el comando anterior, y todos los contenedores se hayan desplegado y configurado correctamente, se podrá acceder a la interfaz web a través de la siguiente url: http://localhost:5000/flights/delays/predict_kafka
 
 ### Spark Cluster
 Cabe destacar que, puesto que se trata de un escenario distribuido de Big Data, lo lógico es construir un cluster de Spark en el que haya un nodo master que asigne las distintas tareas que se generen a distintos workers.  
 De esta manera, se han creado dos ficheros Dockerfile, uno que va a cargarlo el máster y otro que va a ser utilizado por los workers.
+
+http://localhost:8080/
 
 ## Registro de imágenes de los contenedores en el Container Registry de Google Cloud
 ## Despliegue con KUBERNETES
