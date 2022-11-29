@@ -161,10 +161,10 @@ que vamos a crear a continuación
 14. Probar el funcionamiento en: *ip_estática_externa_cluster:30500/flights/delays/predict_kafka*
 
 Lo que se debe obtener es lo siguiente:
-![Interfaz web kubernetes](images/KubernetesFunciona.jpg)
+![Interfaz web kubernetes](images/KubernetesFunciona.JPG)
 
 Además, si modificamos el tipo de servicio del spark master a NodePort y creamos una regla de firewall para poder ver el correcto funcionamiento del Spark cluster y configuramos  en *ip_estática_externa_cluster:30080* podemos ver lo siguiente:
-![Interfaz web Spark Master](images/SparkEnKubernetes.jpg)
+![Interfaz web Spark Master](images/SparkEnKubernetes.JPG)
 ## Despliegue del escenario completo en Google Cloud con NoMachine
 
 
