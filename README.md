@@ -207,6 +207,8 @@ Lo que se debe obtener es lo siguiente:
 Además, si modificamos el tipo de servicio del spark master a NodePort y creamos una regla de firewall para poder ver el correcto funcionamiento del Spark cluster y configuramos  en *ip_estática_externa_cluster:30080* podemos ver lo siguiente:
 ![Interfaz web Spark Master](images/SparkEnKubernetes.JPG)
 ## Despliegue del escenario completo en Google Cloud con NoMachine
+Para desplegar el escenario completo en Google Cloud, en primer lugar hemos creado a través de la interfaz web de [Google Cloud Platform](https://console.cloud.google.com/compute/instances) en el mismo proyecto en el que hemos realizado tanto el despliegue de Kubernetes como el registro de las imágenes.
+Para ello, hay que hacer click en Crear Instancia y la configuramos con una imagen Ubuntu 20.04 con arquitectura x86-64 y 50 GB de almacenamiento.
 
 
 ## Autores
