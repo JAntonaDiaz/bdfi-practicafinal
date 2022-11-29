@@ -86,7 +86,7 @@ Una vez ejecutado el comando anterior, y todos los contenedores se hayan despleg
 ### Spark Cluster
 Cabe destacar que, puesto que se trata de un escenario distribuido de Big Data, lo lógico es construir un cluster de Spark en el que haya un nodo master que asigne las distintas tareas que se generen a distintos workers.
 
-Es por ello que se han creado dos ficheros Dockerfile, uno que va a cargarlo el máster y otro que va a ser utilizado por los workers. El primer Dockerfile se encarga de crear e iniciar el máster y un worker, mientras que el segundo Dockerfile crea e inicia un solo worker. De esta forma, se puede utilizar el segundo Dockerfile para crear tantos workers como se deseen. En este caso, se crea un worker junto con el master, y adicionalmente, se crean dos workers en dos contenedores separados.
+Es por ello que se han creado dos ficheros Dockerfile, uno que va a cargarlo el máster y otro que va a ser utilizado por los workers. El primer Dockerfile se encarga de crear e iniciar el máster y un worker, mientras que el segundo Dockerfile crea e inicia un solo worker. En este caso, se han añadido dos workers en cotenedores separados adicionales al creado junto al máster.
 
 Para comprobar su correcto funcionamiento, se puede acceder a la url: http://localhost:8080/. El resultado debe ser muy similar a este:
 ![Interfaz web spark en compose](images/SparkEnCompose.png)
