@@ -60,6 +60,7 @@ Por último, para arrancar la instancia de Spark en local utilizaremos el siguie
 ```
 *NOTA: el comando anterior incluye paquetes para que el spark pueda conectarse a Kafka y a Mongo y poder realizar el flujo del sistema.* 
 ## Dockerización de los servicios
+https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files
 ## Despliegue con DOCKER-COMPOSE
 Hablar de los workers aquí
 ## Despliegue con KUBERNETES
