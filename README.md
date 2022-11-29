@@ -90,6 +90,13 @@ Para comprobar su correcto funcionamiento, se puede acceder a la url: http://loc
 ![Interfaz web spark en compose](images/SparkEnCompose.png)
 
 ## Registro de imágenes de los contenedores en el Container Registry de Google Cloud
+Aunque no se ha pedido en esta práctica, hemos subido las imágenes de los contenedores al Container Registry de Google Cloud. De esta manera, únicamente es necesario descargarse el [docker-compose](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/gcloud) situado en el directorio bdfi-practicafinal/gcloud de este repositorio.
+No obstante, para poder utilizarlas, previamente ha sido necesario autenticarse en gcloud y subir las imágenes mediante el comando
+```
+Insertar comando
+```
+
+
 ## Despliegue con KUBERNETES
 ### Obtención de los ficheros service.yaml y deployment.yaml
 Partiendo del docker-compose.yaml creado en el hito anterior, se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
