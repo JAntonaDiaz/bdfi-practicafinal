@@ -60,7 +60,6 @@ services:
     network_mode: host
     environment:
       - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
-      - SPARK_HOST=localhost
     depends_on:
       - spark
   flask-server:
