@@ -132,7 +132,7 @@ Una vez ejecutados los comandos anteriores, y todos los contenedores se hayan de
 
 ## Despliegue con KUBERNETES
 ### Obtención de los ficheros service.yaml y deployment.yaml
-Partiendo del docker-compose.yaml creado en el hito anterior, copiado en el directorio bdfi-practicafinal/kubernetes se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
+Partiendo del docker-compose.yaml situado en el directorio bdfi-practicafinal/kubernetes y basado en el generado en la sección anterior, se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
 
 Por ello, una vez instalado Kompose, ejecutando el comando:
 ```
