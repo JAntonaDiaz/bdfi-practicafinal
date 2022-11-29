@@ -52,8 +52,9 @@ Para utilizar spark-submit es necesario generar un fichero empaquetado .jar dond
 sbt clean
 sbt package
 ```
-el .jar estará situado en *bdfi-practicafinal/flight_prediction/target/scala-2.12*.
-Por último, para arrancar el Spark en local utilizaremos el siguiente comando:
+El fichero .jar estará situado en *bdfi-practicafinal/flight_prediction/target/scala-2.12*.
+
+Por último, para arrancar la instancia de Spark en local utilizaremos el siguiente comando:
 ```
 ./../spark-3.1.2-bin-hadoop2.7/bin/spark-submit --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /main/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
 ```
