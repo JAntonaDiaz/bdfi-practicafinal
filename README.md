@@ -2,10 +2,10 @@
 
 Para la realización de la práctica se parte de un dataset que contiene información de vuelos pasados, incluyendo si han salido con retraso o no. A partir de esta información queremos predecir si habrá retrasos en un vuelo futuro. Para ello, entrenamos un modelo predictivo basado en el algoritmo RandomForest con los datos mencionados anteriormente.
 
-Gracias al despliegue de una arquitectura completa, utilizaremos el modelo predictivo que hemos creado y podremos realizar predicciones en tiempo real para nuevos vuelos.
+Gracias al despliegue de la arquitectura descrita a continuación, utilizaremos el modelo predictivo que hemos creado con el objetivo de realizar predicciones en tiempo real para nuevos vuelos.
 
 ## Arquitectura del sistema y versiones
-La arquitectura del escenario completo es la que se muestra a continuación:
+La arquitectura completa del escenario se muestra a continuación:
 [<img src="images/video_course_cover.png">](http://datasyndrome.com/video)
 
 Para que el sistema funcione correctamente, se necesita compatibilidad entre las versiones de los distintos componentes software. Por ello, para el despliegue del escenario se han utilizado las siguientes versiones:
