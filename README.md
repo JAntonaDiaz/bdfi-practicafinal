@@ -80,15 +80,25 @@ Finalmente, para desplegar el escenario utilizando docker-compose, es necesario 
 ```
 sudo docker-compose up
 ```
-Una vez ejecutado el comando anterior, y todos los contenedores se hayan desplegado y configurado correctamente, se podrá acceder a la interfaz web a través de la siguiente url: http://localhost:5000/flights/delays/predict_kafka
+Una vez ejecutado el comando anterior, y todos los contenedores se hayan desplegado y configurado correctamente, se podrá acceder a la interfaz web a través de la siguiente url: http://localhost:5000/flights/delays/predict_kafka. El resulado debe ser muy similar a este:
+![Interfaz web compose](images/ComposeFunciona.JPG)
 
 ### Spark Cluster
 Cabe destacar que, puesto que se trata de un escenario distribuido de Big Data, lo lógico es construir un cluster de Spark en el que haya un nodo master que asigne las distintas tareas que se generen a distintos workers.  
 De esta manera, se han creado dos ficheros Dockerfile, uno que va a cargarlo el máster y otro que va a ser utilizado por los workers.
-
-http://localhost:8080/
+Para comprobar su correcto funcionamiento, se puede acceder a la url: http://localhost:8080/. El resultado debe ser muy similar a este:
+![Interfaz web spark en compose](images/SparkEnCompose.png)
 
 ## Registro de imágenes de los contenedores en el Container Registry de Google Cloud
+Aunque no se ha pedido en esta práctica, hemos subido las imágenes de los contenedores al Container Registry de Google Cloud. De esta manera, únicamente es necesario descargarse el [docker-compose](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/gcloud) situado en el directorio bdfi-practicafinal/gcloud de este repositorio.
+No obstante, para poder utilizarlas, previamente ha sido necesario autenticarse en gcloud y subir las imágenes mediante el comando
+```
+Insertar comando
+```
+
+*Poner lo que tiene Alex de obtener la lista de imagenes con pulls*
+
+
 ## Despliegue con KUBERNETES
 ### Obtención de los ficheros service.yaml y deployment.yaml
 Partiendo del docker-compose.yaml creado en el hito anterior, se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
@@ -143,12 +153,14 @@ Sin embargo, para poder conectarse, necesitan conocer las direcciones IP interna
 7. Una vez se haya creado el clúster correctamente, acceder a sus credenciales:
 `gcloud container clusters get-credentials bdfi-cluster`
 8. Crear los services y la regla del firewall para poder acceder al webserver desde el exterior:
-`kubectl create -f services.yaml`
-`gcloud compute firewall-rules create allow-webserver --allow=tcp:30500`
+```
+kubectl create -f services.yaml
+gcloud compute firewall-rules create allow-webserver --allow=tcp:30500
+```
 9. Acceder a los services creados vía comandos o vía interfaz para obtener las direcciones de los endpoints de los pods 
 que vamos a crear a continuación
 `kubectl get services`
-10. Editar el fichero configmap y copiamos las direcciones de kafka, mongo y zookeeper en el *configmap.yaml*
+10. Editar el fichero configmap y copiamos las direcciones de kafka, mongo, spark y zookeeper en el *configmap.yaml*
 11. Meter el configmap en el clúster y crear los pods:
 `kubectl create -f configmap.yaml`
 `kubectl create -f deployment.yaml`
@@ -158,8 +170,11 @@ que vamos a crear a continuación
 *NOTA: Hay tantas direcciones como nodos configurados. Se puede realizar esta acción en cualquiera de ellos, ya que al haber configurado el servicio del servidor flask como NodePort, cada nodo es un proxy de ese puerto hacia el servicio.*
 14. Probar el funcionamiento en: *ip_estática_externa_cluster:30500/flights/delays/predict_kafka*
 
-FOTACA DE QUE FURULAAAAAAA
+Lo que se debe obtener es lo siguiente:
+![Interfaz web kubernetes](images/KubernetesFunciona.JPG)
 
+Además, si modificamos el tipo de servicio del spark master a NodePort y creamos una regla de firewall para poder ver el correcto funcionamiento del Spark cluster y configuramos  en *ip_estática_externa_cluster:30080* podemos ver lo siguiente:
+![Interfaz web Spark Master](images/SparkEnKubernetes.JPG)
 ## Despliegue del escenario completo en Google Cloud con NoMachine
 
 
