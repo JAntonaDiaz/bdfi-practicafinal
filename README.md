@@ -102,9 +102,27 @@ docker build -t gcr.io/<nombre_proyecto_gcloud>/<nombre_imagen>:<tag> .
 ```
 docker push gcr.io/<nombre_proyecto_gcloud>/<nombre_imagen>:<tag>
 ```
-
+La siguiente figura muestra una captura de pantalla donde aparecen las imágenes que hemos registrado en el Container Registry de Google Cloud.
 
 *Poner lo que tiene Alex de obtener la lista de imagenes con pulls*
+
+Para comprobar su funcionamiento, primero es recomendable (si no se ha hecho anteriormente) eliminar todos los contenedores, redes e imágenes no utilizados. Para ello, se debe ejecutar el siguiente comando:
+```
+sudo docker system prune -a
+```
+En siguiente lugar, hay que clonar el repositorio. Para ello, se debe ejecutar el siguiente comando:
+```
+git clone https://github.com/JAntonaDiaz/bdfi-practicafinal.git
+```
+A continuación, es necesario acceder al directorio mediante la siguiente instrucción:
+```
+cd bdfi-practicafinal/gcloud
+```
+Finalmente, para desplegar el escenario utilizando docker-compose con las imágenes registradas en Google Cloud se debe ejecutar el siguiente comando:
+```
+sudo docker-compose up
+```
+Una vez ejecutados los comandos anteriores, y todos los contenedores se hayan desplegado y configurado correctamente, se podrá acceder a la interfaz web a través de la siguiente url: http://localhost:5000/flights/delays/predict_kafka.
 
 
 ## Despliegue con KUBERNETES
