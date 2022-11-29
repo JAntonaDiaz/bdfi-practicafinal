@@ -106,7 +106,7 @@ docker push gcr.io/<nombre_proyecto_gcloud>/<nombre_imagen>:<tag>
 ```
 La siguiente figura muestra una captura de pantalla donde aparecen las imágenes que hemos registrado en el Container Registry de Google Cloud.
 
-![Container Registry de Google Cloud](images/container-registry-gcloud.PNG)
+![Container Registry de Google Cloud](images/Container-registry-gcloud.PNG)
 
 Para comprobar su funcionamiento, primero es recomendable (si no se ha hecho anteriormente) eliminar todos los contenedores, redes e imágenes no utilizados. Para ello, se debe ejecutar el siguiente comando:
 ```
