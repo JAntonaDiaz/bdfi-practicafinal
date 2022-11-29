@@ -174,7 +174,7 @@ Sin embargo, para poder conectarse, necesitan conocer las direcciones IP interna
 `gcloud config set project project-ID`
 4. Establecer la zona horaria donde se va a crear el clúster:
 `gcloud config set compute/zone europe-west2-a`
-5. Copiar los siguientes ficheros dentro de tu directorio:
+5. Acceder al directorio bdfi-practicafinal/kubernetes del repositorio donde se encuentran los siguientes ficheros:
     - deployment.yaml
     - configmap.yaml
     - services.yaml
