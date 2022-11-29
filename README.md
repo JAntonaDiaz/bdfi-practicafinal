@@ -41,14 +41,18 @@ Para que el sistema funcione correctamente, se necesita compatibilidad entre las
 Para realizar este hito, se ha utilizado el repositorio utilizado en el enunciado, https://github.com/ging/practica_big_data_2019, y se ha seguido su README.md.
 ## Ejecución del job de predicción con Spark Submit
 Cuando despliegas con IntelliJ despliegas el job desde el IDE sin indicar ninguna linea específica de ejecución, por lo que toma por defecto las opciones que se necesitarían para ejecutar el programa, siendo innecesario generar ningun paquete con sbt directamente debido a que el IDE identifica cual es el main class dentro del código fuente. 
-Por otra parte spark-submit, usa como entorno de ejecución la instancia de spark que tienes instalada ya sea de forma local o remota y para ellos debes indicarle donde puede encontrar el fichero empaquetado con sbt en donde se encuentra el main class. En resumen, la ejecución con intelijj solo usa los binarios de spark para ejecutar todo de forma local. Mientras que con spark submit puedes usar cualquier instancia de spark para desplegar el código de la aplicación ya sea de forma local o remota y así aprovechar las ventajas de distribución de la herramienta.
-Partiendo del hito anterior, se va a utilizar sbt, una herramienta de compilación de código abierto para proyectos Scala y Java, similar a Maven.
+Por otra parte spark-submit, usa como entorno de ejecución la instancia de spark que tienes instalada ya sea de forma local o remota y para ellos debes indicarle donde puede encontrar el fichero empaquetado con sbt en donde se encuentra el main class. En resumen, la ejecución con intelijj solo usa los binarios de spark para ejecutar todo de forma local. Mientras que con spark submit puedes usar cualquier instancia de spark para desplegar el código de la aplicación ya sea de forma local o remota y así aprovechar las ventajas de distribución de la herramienta.  
+Partiendo del hito anterior, se va a utilizar sbt, una herramienta de compilación de código abierto para proyectos Scala y Java, similar a Maven.  
 Para utilizar spark-submit es necesario generar un fichero empaquetado .jar donde se encuentre el main class del código. Este fichero se genera accediendo al directorio *bdfi-practicafinal/flight_prediction* y ejecutando los siguientes comandos:
-`sbt clean`
-`sbt package`
+```
+sbt clean
+sbt package
+```
 el .jar estará situado en *bdfi-practicafinal/flight_prediction/target/scala-2.12*.
 Por último, para arrancar el Spark en local utilizaremos el siguiente comando:
-`./../spark-3.1.2-bin-hadoop2.7/bin/spark-submit --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /main/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar`
+```
+./../spark-3.1.2-bin-hadoop2.7/bin/spark-submit --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /main/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
+```
 *NOTA: el comando anterior incluye paquetes para que el spark pueda conectarse a Kafka y a Mongo y poder realizar el flujo del sistema.* 
 ## Dockerización de los servicios
 ## Despliegue con DOCKER-COMPOSE
