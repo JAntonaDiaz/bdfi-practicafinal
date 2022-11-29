@@ -36,14 +36,17 @@ Para que el sistema funcione correctamente, se require compatibilidad entre las 
 - Desplegar el escenario completo usando docker-compose.
 - Desplegar el escenario completo usando kubernetes.
 - Desplegar el escenario completo en una máquina virtual en Google Cloud accediendo a su interfaz gráfica con el gestor NoMachine.
-- Cargar las imágenes de los contenedores en el Container Registry de Google Cloud.
+- Almacenar y cargar las imágenes de los contenedores en el Container Registry de Google Cloud.
 
 ## Funcionamiento de la práctica sin realizar modificaciones
 Para realizar este hito, se ha utilizado el repositorio utilizado en el enunciado, https://github.com/ging/practica_big_data_2019, y se ha seguido su README.md.
 ## Ejecución del job de predicción con Spark Submit
-Cuando despliegas con IntelliJ despliegas el job desde el IDE sin indicar ninguna linea específica de ejecución, por lo que toma por defecto las opciones que se necesitarían para ejecutar el programa, siendo innecesario generar ningun paquete con sbt directamente debido a que el IDE identifica cual es el main class dentro del código fuente. 
-Por otra parte spark-submit, usa como entorno de ejecución la instancia de spark que tienes instalada ya sea de forma local o remota y para ellos debes indicarle donde puede encontrar el fichero empaquetado con sbt en donde se encuentra el main class. En resumen, la ejecución con intelijj solo usa los binarios de spark para ejecutar todo de forma local. Mientras que con spark submit puedes usar cualquier instancia de spark para desplegar el código de la aplicación ya sea de forma local o remota y así aprovechar las ventajas de distribución de la herramienta.  
+Cuando se utiliza IntelliJ se despliega el job desde el IDE, sin necesidad de ejecutar ningún comando específico, por lo que toma por defecto las opciones que se necesitarían para ejecutar el programa, siendo innecesario generar ningún paquete con sbt directamente, debido a que el IDE identifica cual es el main class dentro del código fuente. 
+
+Por otra parte, spark-submit usa como entorno de ejecución la instancia de spark instalada, ya sea de forma local o remota, y se le debe indicar dónde puede encontrar el fichero empaquetado con sbt, que contendrá el main class. En resumen, la ejecución con IntelliJ solo usa los binarios de spark para ejecutar todo de forma local, mientras que con spark submit se puede usar cualquier instancia de spark para desplegar el código de la aplicación, ya sea de forma local o remota, y así aprovechar las ventajas de distribución de la herramienta.
+
 Partiendo del hito anterior, se va a utilizar sbt, una herramienta de compilación de código abierto para proyectos Scala y Java, similar a Maven.  
+
 Para utilizar spark-submit es necesario generar un fichero empaquetado .jar donde se encuentre el main class del código. Este fichero se genera accediendo al directorio *bdfi-practicafinal/flight_prediction* y ejecutando los siguientes comandos:
 ```
 sbt clean
