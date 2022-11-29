@@ -63,11 +63,22 @@ Por último, para arrancar la instancia de Spark en local utilizaremos el siguie
 ### Dockerización de los servicios
 Se ha creado un fichero Dockerfile para cada componente del sistema, de manera que se pueda desplegar cada componente en un contenedor distinto. Estos dockerfiles se encuentran en la carpeta [bdfi-practicafinal/dockerfile-files](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) de este repositorio. Los contenedores serán desplegados automáticamente con docker-compose, siguiendo las instrucciones que se muestran a continuación.
 
+### Despliegue con Docker Compose
+Para realizar el despliegue con docker-compose, es necesario acceder al directorio (https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) y ejecutar las siguientes instrucciones:
+
+```
+sudo docker system prune -a
+```
+```
+sudo docker-compose build
+```
+```
+sudo docker-compose up
+```
+
 ### Spark Cluster
 Cabe destacar que, puesto que se trata de un escenario distribuido de Big Data, lo lógico es construir un cluster de Spark en el que haya un nodo master que asigne las distintas tareas que se generen a distintos workers.  
 De esta manera, se han creado dos ficheros Dockerfile, uno que va a cargarlo el máster y otro que va a ser utilizado por los workers.
-
-### Despliegue con DOCKER-COMPOSE
 
 ## Registro de imágenes de los contenedores en el Container Registry de Google Cloud
 ## Despliegue con KUBERNETES
