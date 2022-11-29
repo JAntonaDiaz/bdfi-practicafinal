@@ -51,7 +51,7 @@ services:
     depends_on:
       - spark
   worker2:
-    build: spark-w2
+    build: spark-w1
     ports:
       - '8082:8080'
       - "7001:7000"
@@ -60,6 +60,17 @@ services:
       - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
     depends_on:
       - spark
+  # spark-submit:
+  #   build: spark-s
+  #   network_mode: host
+  #   environment:
+  #     - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+  #     - KAFKA_HOST=localhost
+  #     - KAFKA_PORT=9092
+  #     - MONGO_PORT=27017
+  #     - MONGO_HOST=localhost
+  #   depends_on:
+  #     - spark
   flask-server:
     image: gcr.io/bdfi-367411/bdfi-flask-server:2
     ports:
