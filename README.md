@@ -61,8 +61,7 @@ Por último, para arrancar la instancia de Spark en local utilizaremos el siguie
 *NOTA: el comando anterior incluye paquetes para que el spark pueda conectarse a Kafka y a Mongo y poder realizar el flujo del sistema.* 
 ## Despliegue del escenario con DOCKER-COMPOSE
 ### Dockerización de los servicios
-Hemos creado un fichero Dockerfile para cada componente del sistema para poder desplegar cada componente en un contenedor distinto. Estos dockerfiles se encuentran en la carpeta [bdfi-practicafinal/dockerfile-files](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) de este repositorio.  
-Estos contenedores serán desplegados automáticamente con docker-compose.
+Se ha creado un fichero Dockerfile para cada componente del sistema, de manera que se pueda desplegar cada componente en un contenedor distinto. Estos dockerfiles se encuentran en la carpeta [bdfi-practicafinal/dockerfile-files](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) de este repositorio. Los contenedores serán desplegados automáticamente con docker-compose, siguiendo las instrucciones que se muestran a continuación.
 ### Creación del fichero docker-compose
 
 ### Spark Cluster
