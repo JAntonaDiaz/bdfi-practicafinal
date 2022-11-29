@@ -68,7 +68,22 @@ kompose convert
 en el mismo directorio en el que se encuentra el docker-compose.yaml, generando los disintos x-service.yaml y x-deployment.yaml que hemos agrupado en los ficheros services.yaml y deployment.yaml.
 
 El resultado del comando anterior es el siguiente:
-*METER AHÍ LOS COMANDOS DE SALIDA TRIGUAPOS*
+```
+INFO Kubernetes file "flask-server-service.yaml" created 
+INFO Kubernetes file "kafka-service.yaml" created 
+INFO Kubernetes file "mongo-service.yaml" created 
+INFO Kubernetes file "spark-service.yaml" created 
+INFO Kubernetes file "worker1-service.yaml" created 
+INFO Kubernetes file "worker2-service.yaml" created 
+INFO Kubernetes file "zookeeper-service.yaml" created 
+INFO Kubernetes file "flask-server-deployment.yaml" created 
+INFO Kubernetes file "kafka-deployment.yaml" created 
+INFO Kubernetes file "mongo-deployment.yaml" created 
+INFO Kubernetes file "spark-deployment.yaml" created 
+INFO Kubernetes file "worker1-deployment.yaml" created 
+INFO Kubernetes file "worker2-deployment.yaml" created 
+INFO Kubernetes file "zookeeper-deployment.yaml" created 
+```
 
 No obstante, cabe señalar que los servicios se encuentran configurados como ClusterIP, por lo que desde el exterior no podríamos acceder el servidor Flask. Por ello, es necesario cambiar el tipo de servicio del servidor Flask a NodePort, permitiendo así que al exponer una dirección IP estática externa para el cluster, a través del puerto 30500 podamos acceder al interfaz web.
 *NOTA: el rango de puertos elegibles de tipo NodePort es entre el 30000-32767*
