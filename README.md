@@ -59,12 +59,20 @@ Por último, para arrancar la instancia de Spark en local utilizaremos el siguie
 ./opt/spark/bin/spark-submit --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /home/user1/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
 ```
 *NOTA: el comando anterior incluye paquetes para que el spark pueda conectarse a Kafka y a Mongo y poder realizar el flujo del sistema.* 
-## Dockerización de los servicios
-Hemos creado un fichero Dockerfile para cada componente del sistema para poder desplegar cada componente en un contenedor distinto. Estos dockerfiles se encuentran en la carpeta [bdfi-practicafinal/dockerfile-files](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) de este repositorio.
+## Despliegue del escenario con DOCKER-COMPOSE
+### Dockerización de los servicios
+Hemos creado un fichero Dockerfile para cada componente del sistema para poder desplegar cada componente en un contenedor distinto. Estos dockerfiles se encuentran en la carpeta [bdfi-practicafinal/dockerfile-files](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) de este repositorio.  
+Estos contenedores serán desplegados automáticamente con docker-compose.
+### Creación del fichero docker-compose
+
+### Spark Cluster
+Puesto que se trata de un escenario distribuido de Big Data, lo lógico es construir un cluster de Spark en el que haya un nodo master que asigne las distintas tareas que se generen a distintos workers.  
+De esta manera, se han creado dos ficheros Dockerfile, uno que va a cargarlo el máster y otro que va a ser utilizado por los workers.
 
 
-## Despliegue con DOCKER-COMPOSE
-Hablar de los workers aquí
+### Despliegue con DOCKER-COMPOSE
+
+## Registro de imágenes de los contenedores en el Container Registry de Google Cloud
 ## Despliegue con KUBERNETES
 ### Obtención de los ficheros service.yaml y deployment.yaml
 Partiendo del docker-compose.yaml creado en el hito anterior, se ha utilizado la herramienta [Kompose](https://kompose.io/). Esta herramienta permite obtener los archivos necesarios para desplegar el escenario con Kubernetes a partir del docker-compose.
