@@ -41,7 +41,7 @@ Para que el sistema funcione correctamente, se require compatibilidad entre las 
 ## Funcionamiento de la práctica sin realizar modificaciones
 Para realizar este hito, se ha utilizado el repositorio utilizado en el enunciado, https://github.com/ging/practica_big_data_2019, y se ha seguido su README.md.
 ## Ejecución del job de predicción con Spark Submit
-Cuando se utiliza IntelliJ se despliega el job desde el IDE, sin necesidad de ejecutar ningún comando específico, por lo que toma por defecto las opciones que se necesitarían para ejecutar el programa, siendo innecesario generar ningún paquete con sbt directamente, debido a que el IDE identifica cual es el main class dentro del código fuente. 
+Cuando se utiliza IntelliJ, se despliega el job desde el IDE sin necesidad de ejecutar ningún comando específico, por lo que toma por defecto las opciones que se necesitarían para ejecutar el programa, siendo innecesario generar ningún paquete con sbt directamente, debido a que el IDE identifica cual es el main class dentro del código fuente. 
 
 Por otra parte, spark-submit usa como entorno de ejecución la instancia de spark instalada, ya sea de forma local o remota, y se le debe indicar dónde puede encontrar el fichero empaquetado con sbt, que contendrá el main class. En resumen, la ejecución con IntelliJ solo usa los binarios de spark para ejecutar todo de forma local, mientras que con spark submit se puede usar cualquier instancia de spark para desplegar el código de la aplicación, ya sea de forma local o remota, y así aprovechar las ventajas de distribución de la herramienta.
 
