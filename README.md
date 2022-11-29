@@ -10,6 +10,7 @@ La arquitectura completa del front-end del escenario se muestra a continuación:
 [<img src="images/video_course_cover.png">](http://datasyndrome.com/video)
 
 Para que el sistema funcione correctamente, se require compatibilidad entre las versiones de los distintos componentes software. Para el despliegue del escenario se han utilizado las siguientes versiones:
+ - Máquina virtual con sistema operativo Ubuntu 20.04
  - [Intellij](https://www.jetbrains.com/help/idea/installation-guide.html) (jdk_1.8) *solo usado para el primer hito
  - [Pyhton3](https://realpython.com/installing-python/) (version 3.7) 
  - [PIP](https://pip.pypa.io/en/stable/installing/)(version 20.0.2)
@@ -213,7 +214,7 @@ Para correr el escenario completo, es necesario descargarse este repositorio med
 ```
 git clone https://github.com/JAntonaDiaz/bdfi-practicafinal.git
 ```
-
+Una vez creada la máquina virtual en Google Cloud, hemos utilizado descargado y configurado la herramienta NoMachine. NoMachine es un programa informático que realiza conexiones remotas muy rápidas y permite acceder a escritorios remotos en Linux. Para la configuración de esta herramienta, hemos seguido el siguiente tutorial: https://www.nomachine.com/es/acceder-a-su-escritorio-remoto-en-google-cloud-platform-a-trav%C3%A9s-de-nomachine.
 
 ## Autores
 - José Antonio Antona Díaz
