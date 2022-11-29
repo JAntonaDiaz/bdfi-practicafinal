@@ -97,10 +97,10 @@ gcloud init
 ```
 A continuación, desde el directorio donde se encuentra el fichero Dockerfile que queremos registrar en Google Cloud, hemos ejecutado los siguientes comandos para construir y registrarla:
 ```
-docker build -t gcr.io/<nombre_proyecto_gloud>/<nombre_imagen>:<tag> .
+docker build -t gcr.io/<nombre_proyecto_gcloud>/<nombre_imagen>:<tag> .
 ```
 ```
-docker push gcr.io/<nombre_proyecto_gloud>/<nombre_imagen>:<tag>
+docker push gcr.io/<nombre_proyecto_gcloud>/<nombre_imagen>:<tag>
 ```
 
 
