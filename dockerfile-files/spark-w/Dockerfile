@@ -15,4 +15,4 @@ ENV SPARK_WORKER_INSTANCES=1
 ENV SPARK_WORKER_CORES=1
 ENV SPARK_EXECUTOR_CORES=1
 
-CMD sleep 45 && ./start-worker.sh spark://instance-bdfi-proyecto-final.europe-southwest1-a.c.bdfi-367411.internal:7077 & sleep infinity
+CMD sleep 45 && ./start-worker.sh spark://$SPARK_HOST:7077 & sleep infinity

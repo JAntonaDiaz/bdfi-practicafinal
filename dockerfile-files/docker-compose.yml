@@ -10,6 +10,7 @@ services:
     ports:
       - '9092:9092'
     network_mode: host
+    restart: always
     depends_on:
       - zookeeper
   topics:
@@ -26,6 +27,7 @@ services:
     network_mode: host
   spark:
     build: spark-m
+    container_name: spark-m
     ports:
       - '8080:8080'
       - "7077:7077"
@@ -36,6 +38,7 @@ services:
       - KAFKA_PORT=9092
       - MONGO_PORT=27017
       - MONGO_HOST=localhost
+      - SPARK_HOST=127.17.0.229
     depends_on:
       - kafka
       - topics
@@ -48,6 +51,7 @@ services:
     network_mode: host
     environment:
       - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+      - SPARK_HOST=127.17.0.229
     depends_on:
       - spark
   worker2:
@@ -58,6 +62,7 @@ services:
     network_mode: host
     environment:
       - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+      - SPARK_HOST=127.17.0.229
     depends_on:
       - spark
   flask-server:

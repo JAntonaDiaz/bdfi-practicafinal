@@ -23,5 +23,8 @@ WORKDIR /main/spark-3.1.2-bin-hadoop2.7/sbin
 ENV SPARK_WORKER_INSTANCES=1
 ENV SPARK_WORKER_CORES=1
 ENV SPARK_EXECUTOR_CORES=1
+ENV SPARK_MASTER_IP=127.17.0.229
+ENV SPARK_MASTER_HOST=127.17.0.229
 
-CMD ./start-master.sh & ./start-worker.sh spark://instance-bdfi-proyecto-final.europe-southwest1-a.c.bdfi-367411.internal:7077 & ../bin/spark-submit --master spark://instance-bdfi-proyecto-final.europe-southwest1-a.c.bdfi-367411.internal:7077 --class "es.upm.dit.ging.predictor.MakePrediction" --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /main/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
+CMD ./start-master.sh & ./start-worker.sh spark://$SPARK_HOST:7077 & ../bin/spark-submit --master spark://$SPARK_HOST:7077 --class "es.upm.dit.ging.predictor.MakePrediction" --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /main/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
+

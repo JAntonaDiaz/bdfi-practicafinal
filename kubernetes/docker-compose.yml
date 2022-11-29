@@ -25,8 +25,7 @@ services:
       - '27017:27017'
     network_mode: host
   spark:
-    image: gcr.io/bdfi-367411/bdfi-spark-m:5
-    container_name: spark-m
+    image: gcr.io/bdfi-367411/bdfi-spark-m:3
     ports:
       - '8080:8080'
       - "7077:7077"
@@ -37,7 +36,7 @@ services:
       - KAFKA_PORT=9092
       - MONGO_PORT=27017
       - MONGO_HOST=localhost
-      - SPARK_HOST=127.17.0.229
+      - SPARK_HOST=localhost
     depends_on:
       - kafka
       - topics
@@ -50,7 +49,7 @@ services:
     network_mode: host
     environment:
       - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
-      - SPARK_HOST=127.17.0.229
+      - SPARK_HOST=localhost
     depends_on:
       - spark
   worker2:
@@ -61,7 +60,7 @@ services:
     network_mode: host
     environment:
       - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
-      - SPARK_HOST=127.17.0.229
+      - SPARK_HOST=localhost
     depends_on:
       - spark
   flask-server:
