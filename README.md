@@ -5,7 +5,7 @@ Para la realización de la práctica se parte de un dataset que contiene informa
 Gracias al despliegue de la arquitectura descrita a continuación, utilizaremos el modelo predictivo que hemos creado con el objetivo de realizar predicciones en tiempo real para nuevos vuelos.
 
 ## Arquitectura Front-end del sistema y versiones
-La arquitectura completa del escenario se muestra a continuación:
+La arquitectura completa del front-end del escenario se muestra a continuación:
 
 [<img src="images/video_course_cover.png">](http://datasyndrome.com/video)
 
