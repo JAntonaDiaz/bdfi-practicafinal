@@ -64,14 +64,19 @@ Por último, para arrancar la instancia de Spark en local utilizaremos el siguie
 Se ha creado un fichero Dockerfile para cada componente del sistema, de manera que se pueda desplegar cada componente en un contenedor distinto. Estos dockerfiles se encuentran en la carpeta [bdfi-practicafinal/dockerfile-files](https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) de este repositorio. Los contenedores serán desplegados automáticamente con docker-compose, siguiendo las instrucciones que se muestran a continuación.
 
 ### Despliegue con Docker Compose
-Para realizar el despliegue con docker-compose, es necesario acceder al directorio (https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) y ejecutar las siguientes instrucciones:
-
+En primer lugar, es recomendable eliminar todos los contenedores, redes e imágenes no utilizados. Para ello, se debe ejecutar el siguiente comando:
 ```
 sudo docker system prune -a
 ```
+En segundo lugar, hay que clonar el repositorio. Para ello, se debe ejecutar el siguiente comando:
 ```
-sudo docker-compose build
+git clone https://github.com/JAntonaDiaz/bdfi-practicafinal.git
 ```
+En tercer lugar, es necesario acceder al directorio (https://github.com/JAntonaDiaz/bdfi-practicafinal/tree/main/dockerfile-files) mediante la siguiente instrucción:
+```
+cd bdfi-practicafinal/dockerfile-files
+```
+Finalmente, para desplegar el escenario utilizando docker-compose, es necesario ejecutar el siguiente comando:
 ```
 sudo docker-compose up
 ```
