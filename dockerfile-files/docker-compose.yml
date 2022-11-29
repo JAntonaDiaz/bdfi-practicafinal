@@ -1,0 +1,74 @@
+version: "3"
+services:
+  zookeeper:
+    build: zookeeper
+    ports:
+     - '2181:2181'
+    network_mode: host
+  kafka:
+    build: kafka
+    ports:
+      - '9092:9092'
+    network_mode: host
+    depends_on:
+      - zookeeper
+  topics:
+    build: topics-kafka
+    ports:
+      - '9092:9092'
+    depends_on:
+      - kafka
+    network_mode: host
+  mongo:
+    build: mongo
+    ports:
+      - '27017:27017'
+    network_mode: host
+  spark:
+    build: spark-m
+    ports:
+      - '8080:8080'
+      - "7077:7077"
+    network_mode: host
+    environment:
+      - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+      - KAFKA_HOST=localhost
+      - KAFKA_PORT=9092
+      - MONGO_PORT=27017
+      - MONGO_HOST=localhost
+    depends_on:
+      - kafka
+      - topics
+      - mongo
+  worker1:
+    build: spark-w
+    ports:
+      - '8081:8080'
+      - "7000:7000"
+    network_mode: host
+    environment:
+      - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+    depends_on:
+      - spark
+  worker2:
+    build: spark-w
+    ports:
+      - '8082:8080'
+      - "7001:7000"
+    network_mode: host
+    environment:
+      - SPARK_HOME=/main/spark-3.1.2-bin-hadoop2.7
+    depends_on:
+      - spark
+  flask-server:
+    build: flask-server
+    ports:
+      - '5000:5000'
+    network_mode: host
+    environment:
+      - PROJECT_HOME=/main/bdfi-practicafinal
+      - MONGO_PORT=27017
+      - MONGO_HOST=localhost
+      - KAFKA_HOST=localhost
+    depends_on:
+      - spark
