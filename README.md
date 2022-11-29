@@ -56,7 +56,7 @@ El fichero .jar estará situado en *bdfi-practicafinal/flight_prediction/target/
 
 Por último, para arrancar la instancia de Spark en local utilizaremos el siguiente comando:
 ```
-/opt/spark/bin/spark-submit --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /home/user1/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
+./opt/spark/bin/spark-submit --class es.upm.dit.ging.predictor.MakePrediction --packages org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2 /home/user1/bdfi-practicafinal/flight_prediction/target/scala-2.12/flight_prediction_2.12-0.1.jar
 ```
 *NOTA: el comando anterior incluye paquetes para que el spark pueda conectarse a Kafka y a Mongo y poder realizar el flujo del sistema.* 
 ## Despliegue del escenario con DOCKER-COMPOSE
@@ -106,7 +106,7 @@ docker push gcr.io/<nombre_proyecto_gcloud>/<nombre_imagen>:<tag>
 ```
 La siguiente figura muestra una captura de pantalla donde aparecen las imágenes que hemos registrado en el Container Registry de Google Cloud.
 
-*Poner lo que tiene Alex de obtener la lista de imagenes con pulls*
+![Container Registry de Google Cloud](images/container-registry-gcloud.PNG)
 
 Para comprobar su funcionamiento, primero es recomendable (si no se ha hecho anteriormente) eliminar todos los contenedores, redes e imágenes no utilizados. Para ello, se debe ejecutar el siguiente comando:
 ```
