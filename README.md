@@ -1,8 +1,8 @@
 # Práctica BDFI: Predicción de retraso de vuelos
 
-Para construir este sistema, se tiene un dataset que contiene información de vuelos pasados, incluyendo si han salido con retraso o no. A partir de esta información queremos predecir si va a haber retrasos en un vuelo futuro. Para ello, entrenamos un modelo predictivo basado en el algoritmo RandomForest con los datos.
-Gracias al despliegue de una arquitectura completa, utilizaremos el modelo predictivo que hemos creado y podremos realizar predicciones en tiempo real para nuevos vuelos. 
+Para la realización de la práctica se parte de un dataset que contiene información de vuelos pasados, incluyendo si han salido con retraso o no. A partir de esta información queremos predecir si habrá retrasos en un vuelo futuro. Para ello, entrenamos un modelo predictivo basado en el algoritmo RandomForest con los datos mencionados anteriormente.
 
+Gracias al despliegue de una arquitectura completa, utilizaremos el modelo predictivo que hemos creado y podremos realizar predicciones en tiempo real para nuevos vuelos.
 
 ## Arquitectura del sistema y versiones
 La arquitectura del escenario completo es la que se muestra a continuación:
