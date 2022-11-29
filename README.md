@@ -179,7 +179,7 @@ Sin embargo, para poder conectarse, necesitan conocer las direcciones IP interna
     - configmap.yaml
     - services.yaml
 6. Crear clúster:
-`gcloud container clusters create bdfi-cluster --num-nodes=5 --max-nodes=8 --min-nodes=3` 
+`gcloud container clusters create bdfi-cluster --num-nodes=5 --max-nodes=8 --min-nodes=3`  
 *NOTA: a pesar de tratarse de una práctica y de que valdría con utilizar 2 nodos, hemos decidido que tenga estado dinámico. Para ello, se han definido un número mínimo de nodos, un número máximo y el número de nodos deseados.*
 7. Una vez se haya creado el clúster correctamente, acceder a sus credenciales:
 `gcloud container clusters get-credentials bdfi-cluster`
